@@ -6,22 +6,23 @@ string? input = Console.ReadLine();
 
 if (int.TryParse(input, out int number))
 {
-    string numberString = Convert.ToString(number);
-    char thirdChar;
-
-    if (numberString.Length < 3)
+    if (number / 100 == 0)
     {
-        System.Console.WriteLine($"{numberString} -> третьей цифры нет");
-    }
-    else if (number < 0)
-    {
-        thirdChar = input[3];
-        System.Console.WriteLine($"{numberString} -> {thirdChar}");
+        System.Console.WriteLine($"{input} -> третьей цифры нет");
     }
     else
     {
-        thirdChar = input[2];
-        System.Console.WriteLine($"{numberString} -> {thirdChar}");
+        while (number < -1000 || number > 1000)
+        {
+            number /= 10;
+        };
+
+        int thirdChar = number % 10;
+        if (thirdChar < 0)
+        {
+            thirdChar *= -1;
+        }
+        System.Console.WriteLine($"{input} -> {thirdChar}");
     }
 }
 else
