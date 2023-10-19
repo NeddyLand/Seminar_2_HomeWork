@@ -6,13 +6,17 @@ string? input = Console.ReadLine();
 
 if (int.TryParse(input, out int number))
 {
-    if (number < 100 || number >= 1000)
+    if (number / 100 == 0)
     {
         System.Console.WriteLine($"{number} -> не является трехзначным");
     }
     else
     {
         int secondChar = number % 100 / 10;
+        if (secondChar < 0)
+        {
+            secondChar *= -1;
+        }
         System.Console.WriteLine($"{number} -> {secondChar}");
     }
 }
